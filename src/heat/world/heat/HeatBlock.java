@@ -20,12 +20,12 @@ public class HeatBlock extends Block {
 		super.load();
 		drawers.each(DrawHeat -> DrawHeat.load(this));
 	}
-
+/* 
 	@Override
 	public TextureRegion[] icons() {
 		return drawers.each(DrawHeat::icons(this));
 	}
-
+*/ 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
 		public HeatModule heat = new HeatModule();
 
