@@ -9,9 +9,9 @@ import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
-public class ExampleJavaMod extends Mod{
+public class HeatLib extends Mod{
 
-    public ExampleJavaMod(){}
+    public HeatLib(){}
 
     @Override
     public void loadContent(){}

@@ -16,7 +16,7 @@ public class HeatBlock extends Block {
 		public HeatModule heat = new HeatModule();
 
 		@Override
-		public void heatModule() {
+		public HeatModule heatModule() {
 			return heat;
 		}
 
