@@ -23,7 +23,7 @@ public class HeatBlock extends Block {
 
 	@Override
 	public TextureRegion[] icons() {
-		return drawers.each(DrawHeat -> DrawHeat.icons(this));
+		return drawers.each(DrawHeat::icons(this));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
