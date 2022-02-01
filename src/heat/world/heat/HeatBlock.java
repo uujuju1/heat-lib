@@ -1,6 +1,7 @@
 package heat.world.heat;
 
 import arc.struct.Seq;
+import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.world.meta.*;
 import mindustry.world.Block;
