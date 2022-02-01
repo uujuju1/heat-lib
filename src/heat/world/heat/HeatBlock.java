@@ -1,15 +1,27 @@
 package heat.world.heat;
 
+import arc.struct.Seq;
 import mindustry.gen.*;
 import mindustry.world.meta.*;
 import mindustry.world.Block;
 
 public class HeatBlock extends Block {
-	// public Seq<DrawHeat> drawers = new Seq<>();
+	public Seq<DrawHeat> drawers = new Seq<>();
 	public float minHeat, maxHeat;
 
 	public HeatBlock(String name) {
 		super(name);
+	}
+
+	@Override
+	public void load() {
+		super.load();
+		drawers.each(DrawHeat -> DrawHeat.load(this));
+	}
+
+	@Override
+	public TextureRegion icons() {
+		return drawer.each(DrawHeat -> DrawHeat.icons(this));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
@@ -28,6 +40,16 @@ public class HeatBlock extends Block {
 			if (heat.heat > maxHeat) {
 				kill();
 			}
+		}
+
+		@Override
+		public void draw() {
+			drawers.each(DrawHeat -> DrawHeat.draw(this));
+		}
+
+		@Override
+		public void drawLight() {
+			drawers.each(DrawHeat -> DrawHeat.drawLight(this));
 		}
 
 		@Override

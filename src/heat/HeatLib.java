@@ -10,10 +10,8 @@ import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
 public class HeatLib extends Mod{
+	public HeatLib(){}
 
-    public HeatLib(){}
-
-    @Override
-    public void loadContent(){}
-
+	@Override
+	public void loadContent(){}
 }
