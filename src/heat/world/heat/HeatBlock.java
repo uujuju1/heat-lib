@@ -4,6 +4,7 @@ import arc.struct.Seq;
 import mindustry.gen.*;
 import mindustry.world.meta.*;
 import mindustry.world.Block;
+import heat.world.heat.draw.DrawHeat;
 
 public class HeatBlock extends Block {
 	public Seq<DrawHeat> drawers = new Seq<>();
@@ -21,7 +22,7 @@ public class HeatBlock extends Block {
 
 	@Override
 	public TextureRegion icons() {
-		return drawer.each(DrawHeat -> DrawHeat.icons(this));
+		return drawers.each(DrawHeat -> DrawHeat.icons(this));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {

@@ -9,10 +9,10 @@ import heat.world.heat.HeatBlock.*;
 public class DrawHeat{
 	protected static final Rand rand = new Rand();
 
-	public void draw(GenericCrafterBuild build){
+	public void draw(HeatBlockBuild build){
 		Draw.rect(build.block.region, build.x, build.y, build.block.rotate ? build.rotdeg() : 0);
 	}
-	public void drawLight(GenericCrafterBuild build){}
+	public void drawLight(HeatBlockBuild build){}
 	public void load(Block block){}
 	public TextureRegion[] icons(Block block){
 		return new TextureRegion[]{block.region};
