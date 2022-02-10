@@ -2,7 +2,7 @@ package heat.world.heat.distribution;
 
 import arc.*;
 import arc.graphics.*;
-import arc.graphics.g2d;
+import arc.graphics.g2d.*;
 import heat.util.*;
 import heat.world.heat.*;
 

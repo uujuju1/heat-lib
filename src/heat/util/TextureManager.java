@@ -1,4 +1,4 @@
-package heat.util.*;
+package heat.util;
 
 import arc.math.*;
 import arc.graphics.g2d.*;
