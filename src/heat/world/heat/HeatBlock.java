@@ -8,7 +8,7 @@ import mindustry.world.Block;
 import heat.world.heat.draw.DrawHeat;
 
 public class HeatBlock extends Block {
-	public Seq<DrawHeat> drawers = new Seq<>();
+	public DrawHeat drawer = new DrawHeat();
 	public float minHeat, maxHeat;
 
 	public HeatBlock(String name) {
@@ -18,14 +18,14 @@ public class HeatBlock extends Block {
 	@Override
 	public void load() {
 		super.load();
-		drawers.each(DrawHeat -> DrawHeat.load(this));
+		drawer.load(this);
 	}
-/* 
+
 	@Override
 	public TextureRegion[] icons() {
-		return drawers.each(DrawHeat::icons(this));
+		return drawer.icons(this);
 	}
-*/ 
+
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
 		public HeatModule heat = new HeatModule();
 
@@ -46,12 +46,12 @@ public class HeatBlock extends Block {
 
 		@Override
 		public void draw() {
-			drawers.each(DrawHeat -> DrawHeat.draw(this));
+			drawer.draw(this);
 		}
 
 		@Override
 		public void drawLight() {
-			drawers.each(DrawHeat -> DrawHeat.drawLight(this));
+			drawer.drawLight(this);
 		}
 
 		@Override
