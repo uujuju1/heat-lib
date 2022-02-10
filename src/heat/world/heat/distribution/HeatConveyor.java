@@ -24,7 +24,7 @@ public class HeatConveyor extends HeatBlock {
 			Draw.alpha(heatf());
 			Draw.rect(heatRegion, x, y, 0);
 			for (int i = 0; i < 10; i++) {
-				Draw.rect(TextureManager.getRegions(regions, 5, 2)[i], x - 16 + (i*8), y - 4 + (i>5 ? 0 : 8), this.rotate ? this.rotdeg(), 0);
+				Draw.rect(TextureManager.getRegions(regions, 5, 2)[i], x - 16 + (i*8), y - 4 + (i>5 ? 0 : 8), rotate ? this.rotdeg(), 0);
 			}
 		}
 	}
