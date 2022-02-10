@@ -1,8 +1,8 @@
-displayName: "Heat-lib"
+displayName: "Heat Lib"
 name: "heat"
-author: "You"
+author: "Uujuju"
 main: "heat.HeatLib"
-description: "A Mindustry java library for blocks with heat".
+description: "A Mindustry java library for blocks with heat."
 version: 1.0
 minGameVersion: 129
 java: true
