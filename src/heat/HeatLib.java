@@ -1,4 +1,4 @@
-package example;
+package heat;
 
 import arc.*;
 import arc.util.*;
@@ -11,7 +11,10 @@ import mindustry.ui.dialogs.*;
 import heat.content.*;
 
 public class HeatLib extends Mod{
-	public HeatLib(){}
+
+	public HeatLib() {
+		Log.info("amogus");
+	}
 
 	@Override
 	public void loadContent(){
