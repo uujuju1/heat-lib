@@ -4,7 +4,7 @@ import arc.math.*;
 import arc.graphics.g2d.*;
 
 public class TextureManager {
-	// borrowed from project unit because its just very userful
+	// borrowed from project unity because its just very userful
 	public static TextureRegion[] getRegions(TextureRegion region, int w, int h, int tilesize){
 		int size = w * h;
 		TextureRegion[] regions = new TextureRegion[size];

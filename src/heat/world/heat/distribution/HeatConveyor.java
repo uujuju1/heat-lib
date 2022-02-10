@@ -24,9 +24,11 @@ public class HeatConveyor extends HeatBlock {
 		@Override
 		public void draw() {
 			Draw.rect(baseRegion, x, y, 0);
-			// Draw.color(heatColor);
+			/*
+			Draw.color(heatColor);
 			Draw.alpha(heatf());
 			Draw.rect(heatRegion, x, y, 0);
+			*/
 			for (int i = 0; i < 10; i++) {
 				Draw.rect(TextureManager.getRegions(regions, 5, 2, 32)[i], x - 16 + (i*8), y - 4 + (i>5 ? 0 : 8), rotate ? rotdeg() : 0);
 			}
