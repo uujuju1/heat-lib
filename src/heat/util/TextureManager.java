@@ -1,5 +1,6 @@
-package heat.world.util.*;
+package heat.util.*;
 
+import arc.math.*;
 import arc.graphics.g2d.*;
 
 public class TextureManager {
