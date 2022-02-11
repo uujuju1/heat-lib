@@ -32,7 +32,7 @@ public class HeatBlock extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("heat", entity -> new Bar("bar.heat", Pal.turretHeat, ((HeatBlockBuild) entity).heatf()));
+		bars.add("heat", entity -> new Bar("bar.heat", Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {

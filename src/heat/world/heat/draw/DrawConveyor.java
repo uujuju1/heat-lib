@@ -4,6 +4,7 @@ import arc.*;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.graphics.*;
 import heat.world.heat.draw.*;
