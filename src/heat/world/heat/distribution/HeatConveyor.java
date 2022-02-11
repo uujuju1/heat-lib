@@ -28,7 +28,7 @@ public class HeatConveyor extends HeatBlock {
 		}
 
 		@Override
-		public boolean acceptHeat() {
+		public boolean acceptHeat(float heat, Building src) {
 			if (back() instanceof HeatConveyorBuild && ((HeatConveyorBuild) back()).outputsHeat(0f, this)) return true;
 			if (left() instanceof HeatConveyorBuild && ((HeatConveyorBuild) left()).outputsHeat(0f, this)) return true;
 			if (right() instanceof HeatConveyorBuild && ((HeatConveyorBuild) right()).outputsHeat(0f, this)) return true;

@@ -4,6 +4,7 @@ import arc.struct.Seq;
 import arc.graphics.g2d.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
+import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.Block;
 import heat.world.heat.draw.DrawHeat;
