@@ -40,6 +40,7 @@ public class DrawConveyor extends DrawHeat {
 		Draw.color();
 		for(int i = 0; i < 4; i++) {
 			HeatBlockBuild next = ((HeatBlockBuild) build.nearby(i));
+			if (!(build.nearby(i) instanceof HeatBlockBuild)) return;
 			if (next.acceptHeat(0f, build) || next.outputsHeat(0f, build)) {
 				Draw.rect(connection, build.x, build.y, i * -90f);
 			} else {
@@ -48,10 +49,9 @@ public class DrawConveyor extends DrawHeat {
 		}
 		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
 	}
-
+	 
 	@Override
 	public void drawLight(HeatBlockBuild build) {
 		Drawf.light(build.x, build.y, lightRadius, heatColor, build.heatf());
 	}
-
 }
