@@ -26,5 +26,13 @@ public class HeatConveyor extends HeatBlock {
 				removeHeat(heatModule().heat * heatConductivity, front());
 			}
 		}
+
+		@Override
+		public boolean acceptHeat() {
+			if (back() instanceof HeatConveyorBuild && ((HeatConveyorBuild) back()).outputsHeat()) return true;
+			if (left() instanceof HeatConveyorBuild && ((HeatConveyorBuild) left()).outputsHeat()) return true;
+			if (right() instanceof HeatConveyorBuild && ((HeatConveyorBuild) right()).outputsHeat()) return true;
+			return false;
+		}
 	}
 }

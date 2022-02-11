@@ -36,16 +36,28 @@ public class DrawConveyor extends DrawHeat {
 	public void draw(HeatBlockBuild build) {
 		Draw.rect(base, build.x, build.y, 0f);
 		Draw.color(heatColor);
+		Draw.alpha(build.heatf())
 		Draw.rect(heat, build.x, build.y, 0f);
 		Draw.color();
 		for(int i = 0; i < 4; i++) {
 			HeatBlockBuild next = ((HeatBlockBuild) build.nearby(i));
-			if (!(build.nearby(i) instanceof HeatBlockBuild)) return;
-			if (next.acceptHeat(0f, build) || next.outputsHeat(0f, build)) {
-				Draw.rect(connection, build.x, build.y, i * -90f);
-			} else {
-				Draw.rect(closed, build.x, build.y, i * -90f);
+			HeatBlockBuild front = ((HeatBlockBuild) build.front());
+			if (next instanceof HeatConveyorBuild) {
+				if (build.acceptHeat(0f, build) && next.front() == build) {
+					Draw.rect(connection, build.x, build.y, i * -90f);
+				} else {
+					Draw.rect(closed, build.x, build.y, i * -90f);
+				}
+			}/*  else {
+				if (next instanceof HeatBlockBuild) {
+					if (next.acceptHeat(0f, build) || next.outputsHeat(0f, build)) {
+						Draw.rect(connection, build.x, build.y, i * -90f);
+					} else {
+						Draw.rect(closed, build.x, build.y, i * -90f);
+					}
+				}
 			}
+			*/ 
 		}
 		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
 	}

@@ -2,6 +2,7 @@ package heat.world.heat;
 
 import arc.struct.Seq;
 import arc.graphics.g2d.*;
+import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.world.meta.*;
 import mindustry.world.Block;
@@ -25,6 +26,12 @@ public class HeatBlock extends Block {
 	@Override
 	public TextureRegion[] icons() {
 		return drawer.icons(this);
+	}
+
+	@Override
+	public void setBars() {
+		super.setBars();
+		bars.add("heat", entity -> new Bar("bar.heat", Pal.turretHeat, ((HeatBlockBuild) entity).heatf()));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
