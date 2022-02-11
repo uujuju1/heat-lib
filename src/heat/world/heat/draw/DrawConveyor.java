@@ -24,7 +24,7 @@ public class DrawConveyor extends DrawHeat {
 
 	@Override
 	public void load(Block block) {
-		super.load();
+		super.load(block);
 		base = Core.atlas.find(block.name + "-base");
 		heat = Core.atlas.find(block.name + "-heat");
 		top = Core.atlas.find(block.name + "-top");
