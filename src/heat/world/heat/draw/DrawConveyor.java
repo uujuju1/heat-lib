@@ -11,7 +11,7 @@ import heat.world.heat.HeatBlock.*;
 import heat.world.heat.distribution.HeatConveyor.*;
 // same as DrawInsideHeat but with a spriteSheet for heat conveyor
 public class DrawConveyor extends DrawHeat {
-	public TextureRegion base, heat, top, open, closed;
+	public TextureRegion base, heat, top, connection, closed;
 	public float lightRadius = 40f;
 	public Color heatColor;
 
@@ -24,10 +24,11 @@ public class DrawConveyor extends DrawHeat {
 
 	@Override
 	public void load(Block block) {
+		super.load();
 		base = Core.atlas.find(block.name + "-base");
 		heat = Core.atlas.find(block.name + "-heat");
 		top = Core.atlas.find(block.name + "-top");
-		open = Core.atlas.find(block.name + "-open");
+		connection = Core.atlas.find(block.name + "-connection");
 		closed = Core.atlas.find(block.name + "-closed");
 	}
 
@@ -40,7 +41,7 @@ public class DrawConveyor extends DrawHeat {
 		for(int i = 0; i < 4; i++) {
 			HeatBlockBuild next = ((HeatBlockBuild) build.nearby(i));
 			if (next.acceptHeat(0f, build) || next.outputsHeat(0f, build)) {
-				Draw.rect(open, build.x, build.y, i * -90f);
+				Draw.rect(connection, build.x, build.y, i * -90f);
 			} else {
 				Draw.rect(closed, build.x, build.y, i * -90f);
 			}
@@ -52,4 +53,5 @@ public class DrawConveyor extends DrawHeat {
 	public void drawLight(HeatBlockBuild build) {
 		Drawf.light(build.x, build.y, lightRadius, heatColor, build.heatf());
 	}
+
 }

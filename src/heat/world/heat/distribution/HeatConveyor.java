@@ -18,12 +18,15 @@ public class HeatConveyor extends HeatBlock {
 	}
 
 	public class HeatConveyorBuild extends HeatBlock.HeatBlockBuild {
+		/*
 		@Override
 		public void updateTile() {
+			super.updateTile();
 			if(front() instanceof HeatConveyorBuild && front().front() != this) {
 				((HeatConveyorBuild) front()).addHeat(heatModule().heat * heatConductivity, this);
 				removeHeat(heatModule().heat * heatConductivity, front());
 			}
 		}
+		*/
 	}
 }
