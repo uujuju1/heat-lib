@@ -36,7 +36,7 @@ public class DrawConveyor extends DrawHeat {
 	public void draw(HeatBlockBuild build) {
 		Draw.rect(base, build.x, build.y, 0f);
 		Draw.color(heatColor);
-		Draw.alpha(build.heatf())
+		Draw.alpha(build.heatf());
 		Draw.rect(heat, build.x, build.y, 0f);
 		Draw.color();
 		for(int i = 0; i < 4; i++) {
