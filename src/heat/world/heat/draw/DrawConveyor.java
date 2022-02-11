@@ -6,7 +6,6 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.world.*;
 import mindustry.graphics.*;
-import heat.util.*;
 import heat.world.heat.draw.*;
 import heat.world.heat.HeatBlock.*;
 import heat.world.heat.distribution.HeatConveyor.*;
@@ -25,11 +24,11 @@ public class DrawConveyor extends DrawHeat {
 
 	@Override
 	public void load(Block block) {
-		base = Core.atlas.find(name + "-base");
-		heat = Core.atlas.find(name + "-heat");
-		top = Core.atlas.find(name + "-top");
-		open = Core.atlas.find(name + "-open");
-		closed = Core.atlas.find(name + "-closed");
+		base = Core.atlas.find(block.name + "-base");
+		heat = Core.atlas.find(block.name + "-heat");
+		top = Core.atlas.find(block.name + "-top");
+		open = Core.atlas.find(block.name + "-open");
+		closed = Core.atlas.find(block.name + "-closed");
 	}
 
 	@Override
@@ -39,14 +38,14 @@ public class DrawConveyor extends DrawHeat {
 		Draw.rect(heat, build.x, build.y, 0f);
 		Draw.color();
 		for(int i = 0; i < 4; i++) {
-			HeatBlockBuild next = build.nearby(i);
-			if (next.acceptHeat() || next.outputsHeat()) {
+			HeatBlockBuild next = ((HeatBlockBuild) build.nearby(i));
+			if (next.acceptHeat(0f, build) || next.outputsHeat(0f, build)) {
 				Draw.rect(open, build.x, build.y, i * -90f);
 			} else {
 				Draw.rect(closed, build.x, build.y, i * -90f);
 			}
 		}
-		Draw.rect(top, build.x, build.y, build.rotate ? build.rotdeg() : 0f);
+		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
 	}
 
 	@Override

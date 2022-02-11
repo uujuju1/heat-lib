@@ -4,8 +4,8 @@ import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.graphics.*;
-import heat.util.*;
 import heat.world.heat.*;
+import heat.world.heat.draw.*;
 
 public class HeatConveyor extends HeatBlock {
 	// the percentage of heat that is passed to the other conveyor. The more hot, the more heat it gives
