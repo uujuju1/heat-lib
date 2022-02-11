@@ -3,6 +3,7 @@ package heat.world.heat.distribution;
 import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import mindustry.gen.*;
 import mindustry.graphics.*;
 import heat.world.heat.*;
 import heat.world.heat.draw.*;
