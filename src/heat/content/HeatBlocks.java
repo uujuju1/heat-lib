@@ -18,7 +18,7 @@ public class HeatBlocks implements ContentList {
 		}};
 		heatSource = new HeatSource("heat-souce") {{
 			size = 1;
-			health = 50
+			health = 50;
 			minHeat = 25;
 			maxHeat = 1000000;
 		}};
