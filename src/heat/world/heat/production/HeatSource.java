@@ -25,8 +25,8 @@ public class HeatSource extends HeatBlock {
 			for (int i=0; i<4; i++) {
 				Building next = this.nearby(i);
 				if (next instanceof HeatConveyorBuild) {
-					if (((HeatConveyorBuild) next).acceptHeat(((HeatConveyorBuild) next).mah, this) && next.front() != this) {
-						((HeatConveyorBuild) next).setHeat(((HeatConveyorBuild) next).mah, this);
+					if (((HeatConveyorBuild) next).acceptHeat(((HeatConveyorBuild) next).heatRange()[1], this) && next.front() != this) {
+						((HeatConveyorBuild) next).setHeat(((HeatConveyorBuild) next).heatRange()[1], this);
 					}
 				}
 			}
