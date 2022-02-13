@@ -55,14 +55,14 @@ public class DrawConveyor extends DrawHeat {
 					} else {
 						Draw.rect(closed, build.x, build.y, i * 90f);
 					}
+				} else {
+					Draw.rect(closed, build.x, build.y, i * 90f);
 				}
-			} else {
-				Draw.rect(closed, build.x, build.y, i * 90f)
 			}
 		}
 		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
 	}
-	 
+	
 	@Override
 	public void drawLight(HeatBlockBuild build) {
 		Drawf.light(build.x, build.y, lightRadius, heatColor, build.heatf());
