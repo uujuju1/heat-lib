@@ -25,11 +25,11 @@ public class DrawInsideHeat extends DrawHeat {
 
 	@Override
 	public void draw(HeatBlockBuild build){
-		Draw.rect(baseRegion, build.x, build.y, 0);
+		Draw.rect(base, build.x, build.y, 0);
 		Draw.color(heatColor);
 		Draw.alpha(build.heatf());
 		Draw.rect(heatRegion, build.x, build.y, 0);
-		Draw.rect(build.block.region, build.x, build.y, build.block.rotate ? build.rotdeg() : 0);
+		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0);
 	}
 
 	@Override

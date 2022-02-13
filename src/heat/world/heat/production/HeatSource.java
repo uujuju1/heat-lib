@@ -1,10 +1,10 @@
 package heat.world.heat.production;
 
 import mindustry.gen.*;
-import mindustry.meta.*;
+import mindustry.world.meta.*;
 import heat.world.heat.*;
 import heat.world.heat.draw.*;
-import heat.world.heat.distribution.*;
+import heat.world.heat.distribution.HeatConveyor.*;
 
 public class HeatSource extends HeatBlock {
 	public HeatSource(String name) {
