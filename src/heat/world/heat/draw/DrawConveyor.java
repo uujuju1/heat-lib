@@ -4,6 +4,7 @@ import arc.*;
 import arc.math.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.graphics.*;
 import heat.world.heat.draw.*;
@@ -24,7 +25,6 @@ public class DrawConveyor extends DrawHeat {
 
 	@Override
 	public void load(Block block) {
-		super.load(block);
 		base = Core.atlas.find(block.name + "-base");
 		heat = Core.atlas.find(block.name + "-heat");
 		top = Core.atlas.find(block.name + "-top");
