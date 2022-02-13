@@ -13,7 +13,7 @@ import heat.world.heat.draw.*;
 public class DrawInsideHeat extends DrawHeat {
 	public float heatLightRadius = 40f;
 	public Color heatColor;
-	public TextureRegion heatRegion, baseRegion;
+	public TextureRegion top, heat, base;
 	protected static final Rand rand = new Rand();
 
 	public DrawInsideHeat(Color heatColor) {
@@ -23,6 +23,7 @@ public class DrawInsideHeat extends DrawHeat {
 		this.heatColor = Pal.turretHeat;
 	}
 
+	@Override
 	public void draw(HeatBlockBuild build){
 		Draw.rect(baseRegion, build.x, build.y, 0);
 		Draw.color(heatColor);
@@ -31,15 +32,15 @@ public class DrawInsideHeat extends DrawHeat {
 		Draw.rect(build.block.region, build.x, build.y, build.block.rotate ? build.rotdeg() : 0);
 	}
 
+	@Override
 	public void drawLight(HeatBlockBuild build){
 		Drawf.light(build.x, build.y, heatLightRadius, heatColor, build.heatf());
 	}
 
+	@Override
 	public void load(Block block){
-		heatRegion = Core.atlas.find(block.name + "-heat");
-		baseRegion = Core.atlas.find(block.name + "-base");
-	}
-	public TextureRegion[] icons(Block block){
-		return new TextureRegion[]{baseRegion, block.region};
+		base = Core.atlas.find(block.name + "-base");
+		heat = Core.atlas.find(block.name + "-heat");
+		top = Core.atlas.find(block.name + "-top");
 	}
 }

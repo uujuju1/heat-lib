@@ -45,9 +45,7 @@ public class DrawConveyor extends DrawHeat {
 			if (next instanceof HeatConveyorBuild) {
 				if (build.acceptHeat(0f, build) && next.front() == build) {
 					Draw.rect(connection, build.x, build.y, i * 90f);
-				} else {
-					Draw.rect(closed, build.x, build.y, i * 90f);
-				}
+				} else Draw.rect(closed, build.x, build.y, i * 90f);
 			} else {
 				if (next instanceof HeatBlockBuild) {
 					if ((((HeatBlockBuild) next).acceptHeat(0f, build) && build.front() == next) || (((HeatBlockBuild) next).outputsHeat(0f, build) && build.front() != next)) {
@@ -59,6 +57,11 @@ public class DrawConveyor extends DrawHeat {
 					Draw.rect(closed, build.x, build.y, i * 90f);
 				}
 			}
+			if (front instanceof HeatConveyorBuild) {
+				if (((HeatConveyorBuild) front).acceptHeat(0f, build) && front.front() != build) {
+					Draw.rect(connection, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
+				} else Draw.rect(closed, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
+			} else Draw.rect(closed, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
 		}
 		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0f);
 	}

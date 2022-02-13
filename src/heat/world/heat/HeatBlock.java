@@ -12,6 +12,8 @@ import heat.world.heat.draw.DrawHeat;
 public class HeatBlock extends Block {
 	public DrawHeat drawer = new DrawHeat();
 	public float minHeat, maxHeat;
+	// percentage of heat transmition
+	public float heatTransmittance;
 
 	public HeatBlock(String name) {
 		super(name);
