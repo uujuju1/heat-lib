@@ -38,6 +38,9 @@ public interface HeatBlockComp {
 		return true;
 	}
 
+	// for outside block reasons 
+	default float[] heatRange() {return null;}
+
 	// extra stuff
 	default void drawHeat() {}
 	default void overheat() {}
