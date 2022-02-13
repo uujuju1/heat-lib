@@ -19,6 +19,7 @@ public class HeatSource extends HeatBlock {
 		public void updateTile() {
 			super.updateTile();
 			setHeat(maxHeat, this);
+			transmitHeat();
 		}
 
 		public void transmitHeat() {
@@ -31,5 +32,8 @@ public class HeatSource extends HeatBlock {
 				}
 			}
 		}
+
+		@Override
+		public boolean acceptHeat(float heat, Building src) {return false;}
 	}
 }
