@@ -1,6 +1,6 @@
 package heat.world.heat;
 
-import arc.struct.Seq;
+import arc.util.*;
 import arc.graphics.g2d.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
@@ -11,9 +11,15 @@ import heat.world.heat.draw.DrawHeat;
 
 public class HeatBlock extends Block {
 	public DrawHeat drawer = new DrawHeat();
+
+	// range of heat that block can hold
+	// less than, min block sets heat to minHeat
+	// more than, max block explodes
 	public float minHeat, maxHeat;
 	// percentage of heat transmition
 	public float heatTransmittance;
+	// scale of delta time worth of heat lost
+	public float coolDownScale = 0.1f;
 
 	public HeatBlock(String name) {
 		super(name);
@@ -54,6 +60,11 @@ public class HeatBlock extends Block {
 			if (heat.heat > maxHeat) {
 				kill();
 			}
+		}
+
+		@Override
+		public void updateTile() {
+			heat.heat -= Time.delta * coolDownScale;
 		}
 
 		@Override

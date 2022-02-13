@@ -10,7 +10,6 @@ public class HeatSource extends HeatBlock {
 	public HeatSource(String name) {
 		super(name);
 		drawer = new DrawInsideHeat();
-		heatTransmittance = 1f;
 		buildVisibility = BuildVisibility.shown;
 	}
 
