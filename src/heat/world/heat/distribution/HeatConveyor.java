@@ -22,7 +22,7 @@ public class HeatConveyor extends HeatBlock {
 		@Override
 		public void updateTile() {
 			super.updateTile();
-			if(front() instanceof HeatConveyorBuild && front().front() != this) {
+			if(front() instanceof HeatConveyorBuild && front().front() != this && acceptHeat()) {
 				((HeatConveyorBuild) front()).addHeat(heatModule().heat * heatConductivity, this);
 				removeHeat(heatModule().heat * heatConductivity, front());
 			}
