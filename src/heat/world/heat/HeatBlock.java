@@ -41,7 +41,7 @@ public class HeatBlock extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("heat", entity -> new Bar("bar.heat", Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
+		bars.add("heat", entity -> new Bar("bar.heat" + ":" + ((HeatBlockBuild) entity).heatModule().heat, Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
@@ -55,7 +55,7 @@ public class HeatBlock extends Block {
 		@Override
 		public void overheat() {
 			if (heat.heat < minHeat) {
-				setHeat(minHeat, this);
+				setHeat(minHeat + 1, this);
 			}
 			if (heat.heat > maxHeat) {
 				kill();
@@ -64,7 +64,10 @@ public class HeatBlock extends Block {
 
 		@Override
 		public void updateTile() {
-			removeHeat(Time.delta * coolDownScl, this);
+			overheat();
+			if (heat.heat > minHeat) {
+				removeHeat(Time.delta * coolDownScl, this);
+			}
 		}
 
 		@Override

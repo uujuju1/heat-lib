@@ -29,6 +29,8 @@ public class DrawInsideHeat extends DrawHeat {
 		Draw.color(heatColor);
 		Draw.alpha(build.heatf());
 		Draw.rect(heat, build.x, build.y, 0);
+		Draw.color();
+		Draw.alpha(1f);
 		Draw.rect(top, build.x, build.y, build.block.rotate ? build.rotdeg() : 0);
 	}
 

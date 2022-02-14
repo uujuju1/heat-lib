@@ -39,6 +39,7 @@ public class DrawConveyor extends DrawHeat {
 		Draw.alpha(build.heatf());
 		Draw.rect(heat, build.x, build.y, 0f);
 		Draw.color();
+		Draw.alpha(1f);
 		for(int i = 0; i < 4; i++) {
 			Building next = build.nearby(i);
 			Building front = build.front();
