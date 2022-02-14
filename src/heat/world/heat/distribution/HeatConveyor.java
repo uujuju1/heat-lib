@@ -20,7 +20,7 @@ public class HeatConveyor extends HeatBlock {
 
 	@Override
 	public boolean canReplace(Block other) {
-		return super.canReplace(other) && other instanceof HeatConveyor;
+		return super.canReplace(other) || other instanceof HeatConveyor;
 	}
 
 	public class HeatConveyorBuild extends HeatBlock.HeatBlockBuild {

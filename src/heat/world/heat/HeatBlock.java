@@ -64,13 +64,13 @@ public class HeatBlock extends Block {
 			}
 		}
 
-		@Override
-		public void updateTile() {
-			overheat();
-			if (heat.heat > minHeat) {
-				removeHeat(Time.delta * coolDownScl, this);
-			}
-		}
+		// @Override
+		// public void updateTile() {
+		// 	overheat();
+		// 	if (heat.heat > minHeat) {
+		// 		removeHeat(Time.delta * coolDownScl, this);
+		// 	}
+		// }
 
 		@Override
 		public void draw() {

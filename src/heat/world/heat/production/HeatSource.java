@@ -16,7 +16,7 @@ public class HeatSource extends HeatBlock {
 	public class HeatSourceBuild extends HeatBlock.HeatBlockBuild {
 		@Override
 		public void updateTile() {
-			setHeat(maxHeat, this);
+			if (heat.heat <= maxHeat - 2f) addHeat(Time.delta, this);
 			transmitHeat();
 		}
 
