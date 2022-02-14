@@ -41,7 +41,7 @@ public class HeatBlock extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("heat", entity -> new Bar("bar.heat" + ":" + ((HeatBlockBuild) entity).heatModule().heat, Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
+		bars.add("heat", entity -> new Bar(Core.bundle.get("bar.heat") + ":" + ((HeatBlockBuild) entity).heatModule().heat, Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
@@ -89,6 +89,18 @@ public class HeatBlock extends Block {
 		@Override
 		public float[] heatRange() {
 			return new float[]{minHeat, maxHeat};
+		}
+
+		@Override
+		public void write(Writes w){
+			super.write(w);
+			w.f(heat.heat);
+		}
+
+		@Override
+		public void read(Reads read, byte revision){
+			super.read(read, revision);
+			heat.heat = read.f();
 		}
 	}
 }

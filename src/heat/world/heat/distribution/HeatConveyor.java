@@ -17,6 +17,11 @@ public class HeatConveyor extends HeatBlock {
 		heatTransmittance = 0.1f;
 	}
 
+	@Override
+	public boolean canReplace(Block other) {
+		return super.canReplace(other) && other instanceof HeatConveyor;
+	}
+
 	public class HeatConveyorBuild extends HeatBlock.HeatBlockBuild {
 		@Override
 		public void updateTile() {

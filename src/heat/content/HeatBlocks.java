@@ -13,14 +13,14 @@ public class HeatBlocks implements ContentList {
 		heatConveyor = new HeatConveyor("heat-conveyor") {{
 			size = 1;
 			health = 50;
-			minHeat = 25;
-			maxHeat = 1000;
+			minHeat = 25f;
+			maxHeat = 1000f;
 		}};
 		heatSource = new HeatSource("heat-source") {{
 			size = 1;
 			health = 50;
-			minHeat = 25;
-			maxHeat = 1000000;
+			minHeat = 25f;
+			maxHeat = 1000000f;
 		}};
 	}
 }
