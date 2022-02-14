@@ -1,5 +1,6 @@
 package heat.world.heat;
 
+import arc.*;
 import arc.util.*;
 import arc.util.io.*;
 import arc.graphics.g2d.*;
