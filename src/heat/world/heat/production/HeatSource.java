@@ -16,7 +16,6 @@ public class HeatSource extends HeatBlock {
 	public class HeatSourceBuild extends HeatBlock.HeatBlockBuild {
 		@Override
 		public void updateTile() {
-			super.updateTile();
 			setHeat(maxHeat, this);
 			transmitHeat();
 		}

@@ -19,7 +19,7 @@ public class HeatBlock extends Block {
 	// percentage of heat transmition
 	public float heatTransmittance;
 	// scale of delta time worth of heat lost
-	public float coolDownScale = 0.1f;
+	public float coolDownScl = 0.1f;
 
 	public HeatBlock(String name) {
 		super(name);
@@ -64,7 +64,7 @@ public class HeatBlock extends Block {
 
 		@Override
 		public void updateTile() {
-			heat.heat -= Time.delta * coolDownScale;
+			removeHeat(Time.delta * coolDownScl, this);
 		}
 
 		@Override
