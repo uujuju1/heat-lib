@@ -1,6 +1,7 @@
 package heat.world.heat;
 
 import arc.util.*;
+import arc.util.io.*;
 import arc.graphics.g2d.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
