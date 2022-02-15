@@ -91,6 +91,6 @@ public class HeatBlock extends Block {
 		@Override
 		public float[] heatRange() {
 			return new float[]{minHeat, maxHeat};
-		}f
+		}
 	}
 }
