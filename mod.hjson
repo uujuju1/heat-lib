@@ -4,5 +4,5 @@ author: "Uujuju"
 main: "heat.HeatLib"
 description: "A Mindustry java library for blocks with heat."
 version: 1.0
-minGameVersion: 129
+minGameVersion: 136
 java: true

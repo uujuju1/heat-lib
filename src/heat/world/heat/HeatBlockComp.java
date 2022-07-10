@@ -29,12 +29,16 @@ public interface HeatBlockComp {
 	default void setHeat(float heat) {
 		setHeat(heat, null);
 	}
+	default void transferHeat(HeatBlockBuild from, HeatBlockBuild to, float amount) {
+		from.removeHeat(amount, from);
+		to.addHeat(amount, to);
+	}
 
 	// exchange heat
 	default boolean acceptHeat(float heat, Building src) {
 		return true;
 	}
-	default boolean outputsHeat(float heat, Building src) {
+	default boolean outputHeat(float heat, Building src) {
 		return true;
 	}
 

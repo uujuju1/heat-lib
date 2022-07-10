@@ -7,15 +7,22 @@ import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.graphics.*;
 import heat.world.heat.*;
-import heat.world.heat.draw.*;
 
 public class HeatConveyor extends HeatBlock {
+	public TextureRegion connection, connectionHeat;
 
 	public HeatConveyor(String name) {
 		super(name);
 		rotate = true;
-		drawer = new DrawConveyor();
+		acceptsHeat = outputsHeat = true;
 		heatTransmittance = 0.1f;
+	}
+
+	@Override
+	public void load() {
+		super.load();
+		connection = Core.atlas.find(name + "-connection");
+		connectionHeat = Core.atlas.find(name + "-connection-heat");
 	}
 
 	@Override
@@ -23,22 +30,21 @@ public class HeatConveyor extends HeatBlock {
 		return super.canReplace(other) || other instanceof HeatConveyor;
 	}
 
-	public class HeatConveyorBuild extends HeatBlock.HeatBlockBuild {
+	public class HeatConveyorBuild extends HeatBlockBuild {
 		@Override
-		public void updateTile() {
-			super.updateTile();
-			if(front() instanceof HeatConveyorBuild && front().front() != this) {
-				if (((HeatConveyorBuild) front()).acceptHeat(0f, this)) {
-					((HeatConveyorBuild) front()).addHeat(heatModule().heat * heatTransmittance, this);
-					removeHeat(heatModule().heat * heatTransmittance, front());
-				}
+		public void draw() {
+			Draw.rect(region, x, y);
+			for (int i = 0; i < 4; i++) {
+				if (nearby(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) nearby(i);
+				if (next.acceptHeat()) Draw.rect(connection, x, y, i * 90);
 			}
-		}
-
-		@Override
-		public boolean acceptHeat(float heat, Building src) {
-			if (src instanceof HeatBlockBuild && front() != src) return true;
-			return false;
+			Draw.color(Pal.turretHeat);
+			Draw.alpha(heatf());
+			drawHeat();
+			for (int i = 0; i < 4; i++) {
+				if (nearby(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) nearby(i);
+				if (next.acceptHeat()) Draw.rect(connectionHeat, x, y, i * 90);
+			}
 		}
 	}
 }

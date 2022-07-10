@@ -6,7 +6,7 @@ import heat.world.heat.production.*;
 import heat.world.heat.distribution.*;
 
 public class HeatBlocks implements ContentList {
-	public static Block heatConveyor, heatSource;
+	public static Block heatConveyor, heatSource, heatVoid;
 
 	@Override
 	public void load() {
@@ -17,6 +17,12 @@ public class HeatBlocks implements ContentList {
 			maxHeat = 1000f;
 		}};
 		heatSource = new HeatSource("heat-source") {{
+			size = 1;
+			health = 50;
+			minHeat = 25f;
+			maxHeat = 1000000f;
+		}};
+		heatVoid = new heatVoid("heat-void") {{
 			size = 1;
 			health = 50;
 			minHeat = 25f;

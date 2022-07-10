@@ -9,19 +9,22 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.Block;
-import heat.world.heat.draw.DrawHeat;
 
 public class HeatBlock extends Block {
-	public DrawHeat drawer = new DrawHeat();
+	public TextureRegion heat;
+	public float 
+		// range of heat
+		minHeat = 600,
+		maxHeat = 600,
 
-	// range of heat that block can hold
-	// less than, min block sets heat to minHeat
-	// more than, max block explodes
-	public float minHeat, maxHeat;
-	// percentage of heat transmition
-	public float heatTransmittance;
-	// scale of delta time worth of heat lost
-	public float coolDownScl = 0.1f;
+		// percentage of heat transmition
+		heatTransmittance = 0.05f,
+
+		// scale of delta time worth of heat lost
+		coolDownScl = 0.01f;
+	public boolean
+		acceptsHeat = true,
+		outputsHeat = true;
 
 	public HeatBlock(String name) {
 		super(name);
@@ -32,7 +35,7 @@ public class HeatBlock extends Block {
 	@Override
 	public void load() {
 		super.load();
-		drawer.load(this);
+		heat = Core.atlas.find(name + "-heat");
 	}
 
 	@Override
@@ -55,6 +58,15 @@ public class HeatBlock extends Block {
 		}
 
 		@Override
+		public boolean acceptHeat() {
+			return acceptsHeat;
+		}
+		@Override
+		public boolean outputHeat() {
+			return outputsHeat;
+		}
+
+		@Override
 		public void overheat() {
 			if (heat.heat < minHeat) {
 				setHeat(minHeat + 1, this);
@@ -67,19 +79,16 @@ public class HeatBlock extends Block {
 		@Override
 		public void updateTile() {
 			overheat();
-			if (heat.heat > minHeat) {
-				setHeat(maxHeat, this);
+			for(int i = 0, i < this.proximity.size, i++) {
+				if (this.proximity.get(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) this.proximity.get(i);
+				if (next.acceptHeat()) transferHeat(this, next, heatModule().heat * heatTransmittance); 
 			}
 		}
 
 		@Override
 		public void draw() {
-			drawer.draw(this);
-		}
-
-		@Override
-		public void drawLight() {
-			drawer.drawLight(this);
+			super.draw();
+			drawHeat();
 		}
 
 		@Override
@@ -87,10 +96,9 @@ public class HeatBlock extends Block {
 			return heat.heat/maxHeat;
 		}
 
-		// for outside block reasons
 		@Override
-		public float[] heatRange() {
-			return new float[]{minHeat, maxHeat};
+		public void drawHeat() {
+			Draw.rect(heat, x, y, 0);
 		}
 	}
 }
