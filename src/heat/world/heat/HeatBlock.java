@@ -61,6 +61,11 @@ public class HeatBlock extends Block {
 			return outputsHeat;
 		}
 
+		default void transferHeat(HeatBlockBuild from, HeatBlockBuild to, float amount) {
+			from.removeHeat(amount, from);
+			to.addHeat(amount, to);
+		}
+
 		@Override
 		public void overheat() {
 			if (heatm.heat < minHeat) {
@@ -91,7 +96,7 @@ public class HeatBlock extends Block {
 
 		@Override
 		public float heatf() {
-			return heat.heat/maxHeat;
+			return heatm.heat/maxHeat;
 		}
 
 		@Override
