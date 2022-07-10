@@ -38,7 +38,7 @@ public class HeatConveyor extends HeatBlock {
 				HeatBlockBuild next;
 				if (nearby(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) nearby(i);
-					if (next.acceptHeat()) Draw.rect(connection, x, y, i * 90);
+					if (next.acceptHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connection, x, y, i * 90);
 				}
 			}
 			Draw.color(Pal.turretHeat);
@@ -48,7 +48,7 @@ public class HeatConveyor extends HeatBlock {
 				HeatBlockBuild next;
 				if (nearby(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) nearby(i);
-					if (next.acceptHeat()) Draw.rect(connectionHeat, x, y, i * 90);
+					if (next.acceptHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connectionHeat, x, y, i * 90);
 				}
 			}
 		}
