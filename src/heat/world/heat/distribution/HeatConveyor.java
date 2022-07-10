@@ -35,15 +35,21 @@ public class HeatConveyor extends HeatBlock {
 		public void draw() {
 			Draw.rect(region, x, y);
 			for (int i = 0; i < 4; i++) {
-				if (nearby(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) nearby(i);
-				if (next.acceptHeat()) Draw.rect(connection, x, y, i * 90);
+				HeatBlockBuild next;
+				if (nearby(i) instanceof HeatBlockBuild) {
+					next = (HeatBlockBuild) nearby(i);
+					if (next.acceptHeat()) Draw.rect(connection, x, y, i * 90);
+				}
 			}
 			Draw.color(Pal.turretHeat);
 			Draw.alpha(heatf());
 			drawHeat();
 			for (int i = 0; i < 4; i++) {
-				if (nearby(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) nearby(i);
-				if (next.acceptHeat()) Draw.rect(connectionHeat, x, y, i * 90);
+				HeatBlockBuild next;
+				if (nearby(i) instanceof HeatBlockBuild) {
+					next = (HeatBlockBuild) nearby(i);
+					if (next.acceptHeat()) Draw.rect(connectionHeat, x, y, i * 90);
+				}
 			}
 		}
 	}

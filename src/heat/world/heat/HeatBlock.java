@@ -79,9 +79,12 @@ public class HeatBlock extends Block {
 		@Override
 		public void updateTile() {
 			overheat();
-			for(int i = 0, i < this.proximity.size, i++) {
-				if (this.proximity.get(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) this.proximity.get(i);
-				if (next.acceptHeat()) transferHeat(this, next, heatModule().heat * heatTransmittance); 
+			for(int i = 0; i < this.proximity.size; i++) {
+				HeatBlockBuild next;
+				if (this.proximity.get(i) instanceof HeatBlockBuild) {
+					next = (HeatBlockBuild) this.proximity.get;
+					if (next.acceptHeat()) transferHeat(this, next, heatModule().heat * heatTransmittance);
+				}
 			}
 		}
 
