@@ -6,10 +6,9 @@ import mindustry.world.meta.*;
 import heat.world.heat.*;
 
 public class HeatSource extends HeatBlock {
-	
+
 	public HeatSource(String name) {
 		super(name);
-		buildVisibility = BuildVisibility.shown;
 		acceptHeat = false;
 	}
 
