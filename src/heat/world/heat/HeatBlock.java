@@ -61,7 +61,7 @@ public class HeatBlock extends Block {
 			return outputsHeat;
 		}
 
-		default void transferHeat(HeatBlockBuild from, HeatBlockBuild to, float amount) {
+		public void transferHeat(HeatBlockBuild from, HeatBlockBuild to, float amount) {
 			from.removeHeat(amount, from);
 			to.addHeat(amount, to);
 		}
