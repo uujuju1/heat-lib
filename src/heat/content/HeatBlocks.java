@@ -7,7 +7,6 @@ import heat.world.heat.distribution.*;
 public class HeatBlocks {
 	public static Block heatConveyor, heatSource, heatVoid;
 
-	@Override
 	public void load() {
 		heatConveyor = new HeatConveyor("heat-conveyor") {{
 			size = 1;

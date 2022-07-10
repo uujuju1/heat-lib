@@ -19,7 +19,7 @@ public class HeatSource extends HeatBlock {
 				HeatBlockBuild next;
 				if (nearby(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) nearby(i);
-					if (next.acceptHeat()) next.setHeat(((HeatBlock) next.block).maxHeat, this);
+					if (next.acceptHeat(((HeatBlock) next.block).maxHeat, this)) next.setHeat(((HeatBlock) next.block).maxHeat, this);
 				}
 			}
 		}

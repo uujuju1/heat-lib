@@ -45,11 +45,11 @@ public class HeatBlock extends Block {
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
-		public HeatModule heat = new HeatModule();
+		public HeatModule heatm = new HeatModule();
 
 		@Override
 		public HeatModule heatModule() {
-			return heat;
+			return heatm;
 		}
 
 		@Override
@@ -63,10 +63,10 @@ public class HeatBlock extends Block {
 
 		@Override
 		public void overheat() {
-			if (heat.heat < minHeat) {
+			if (heatm.heat < minHeat) {
 				setHeat(minHeat + 1, this);
 			}
-			if (heat.heat > maxHeat) {
+			if (heatm.heat > maxHeat) {
 				kill();
 			}
 		}
@@ -78,7 +78,7 @@ public class HeatBlock extends Block {
 				HeatBlockBuild next;
 				if (this.proximity.get(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) this.proximity.get(i);
-					if (next.acceptHeat()) transferHeat(this, next, heatModule().heat * heatTransmittance);
+					if (next.acceptHeat(heatModule().heat * heatTransmittance, this)) transferHeat(this, next, heatModule().heat * heatTransmittance);
 				}
 			}
 		}
