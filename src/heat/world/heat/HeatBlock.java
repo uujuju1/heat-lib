@@ -61,6 +61,15 @@ public class HeatBlock extends Block {
 			return outputsHeat;
 		}
 
+		public void addHeat(float heat, @Nullable Building build) {heatModule().heat += heat;}
+		public void addHeat(float heat) {addHeat(heat, null);}
+
+		public void removeHeat(float heat, @Nullable Building build) {heatModule().heat -= heat;}
+		public void removeHeat(float heat) {removeHeat(heat, null);}
+
+		public void setHeat(float heat, @Nullable Building build) {heatModule().heat = heat;}
+		public void setHeat(float heat) {setHeat(heat, null);}
+
 		public void transferHeat(HeatBlockBuild from, HeatBlockBuild to, float amount) {
 			from.removeHeat(amount, from);
 			to.addHeat(amount, to);
@@ -69,7 +78,7 @@ public class HeatBlock extends Block {
 		@Override
 		public void overheat() {
 			if (heatm.heat < minHeat) {
-				setHeat(minHeat + 1, this);
+				setHeat(minHeat, this);
 			}
 			if (heatm.heat > maxHeat) {
 				kill();
@@ -91,6 +100,8 @@ public class HeatBlock extends Block {
 		@Override
 		public void draw() {
 			super.draw();
+			Draw.color(Pal.turretHeat);
+			Draw.alpha(heatf());
 			drawHeat();
 		}
 
