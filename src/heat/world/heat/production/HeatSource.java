@@ -16,8 +16,11 @@ public class HeatSource extends HeatBlock {
 		@Override
 		public void updateTile() {
 			for (int i = 0; i < 4; i++) {
-				if (nearby(i) instanceof HeatBlockBuild) HeatBlockBuild next = (HeatBlockBuild) nearby(i);
-				if (next.acceptHeat()) next.setHeat(((HeatBlock) next.block).maxHeat, this);
+				HeatBlockBuild next;
+				if (nearby(i) instanceof HeatBlockBuild) {
+					next = (HeatBlockBuild) nearby(i);
+					if (next.acceptHeat()) next.setHeat(((HeatBlock) next.block).maxHeat, this);
+				}
 			}
 		}
 
