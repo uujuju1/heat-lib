@@ -4,7 +4,7 @@ import mindustry.world.Block;
 import heat.world.heat.production.*;
 import heat.world.heat.distribution.*;
 
-public class HeatBlocks implements {
+public class HeatBlocks {
 	public static Block heatConveyor, heatSource, heatVoid;
 
 	@Override
