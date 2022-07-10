@@ -9,7 +9,7 @@ public class HeatSource extends HeatBlock {
 
 	public HeatSource(String name) {
 		super(name);
-		acceptHeat = false;
+		acceptsHeat = false;
 	}
 
 	public class HeatSourceBuild extends HeatBlockBuild {
@@ -23,8 +23,5 @@ public class HeatSource extends HeatBlock {
 				}
 			}
 		}
-
-		@Override
-		public boolean acceptHeat(float heat, Building src) {return false;}
 	}
 }

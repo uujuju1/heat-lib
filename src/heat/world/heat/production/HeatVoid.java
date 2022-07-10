@@ -8,7 +8,7 @@ import heat.world.heat.*;
 public class HeatVoid extends HeatBlock {
 	public HeatVoid(String name) {
 		super(name);
-		outputHeat = false;
+		outputsHeat = false;
 	}
 
 	public class HeatVoidBuild extends HeatBlockBuild {
@@ -16,8 +16,5 @@ public class HeatVoid extends HeatBlock {
 		public void updateTile() {
 			setHeat(0, this);
 		}
-
-		@Override
-		public boolean acceptHeat(float heat, Building src) {return false;}
 	}
 }

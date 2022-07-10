@@ -33,7 +33,7 @@ public class HeatConveyor extends HeatBlock {
 	public class HeatConveyorBuild extends HeatBlockBuild {
 		@Override
 		public void draw() {
-			Draw.rect(region, x, y);
+			Draw.rect(region, x, y, 0);
 			for (int i = 0; i < 4; i++) {
 				HeatBlockBuild next;
 				if (nearby(i) instanceof HeatBlockBuild) {

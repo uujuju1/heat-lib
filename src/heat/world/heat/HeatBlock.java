@@ -39,14 +39,9 @@ public class HeatBlock extends Block {
 	}
 
 	@Override
-	public TextureRegion[] icons() {
-		return drawer.icons(this);
-	}
-
-	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("heat", entity -> new Bar(Core.bundle.get("bar.heat") + ":" + ((HeatBlockBuild) entity).heatModule().heat, Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
+		addBar("heat", entity -> new Bar(Core.bundle.get("bar.heat") + ":" + ((HeatBlockBuild) entity).heatModule().heat, Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
@@ -58,11 +53,11 @@ public class HeatBlock extends Block {
 		}
 
 		@Override
-		public boolean acceptHeat() {
+		public boolean acceptHeat(float heat, Building src) {
 			return acceptsHeat;
 		}
 		@Override
-		public boolean outputHeat() {
+		public boolean outputHeat(float heat, Building src) {
 			return outputsHeat;
 		}
 
@@ -82,7 +77,7 @@ public class HeatBlock extends Block {
 			for(int i = 0; i < this.proximity.size; i++) {
 				HeatBlockBuild next;
 				if (this.proximity.get(i) instanceof HeatBlockBuild) {
-					next = (HeatBlockBuild) this.proximity.get;
+					next = (HeatBlockBuild) this.proximity.get(i);
 					if (next.acceptHeat()) transferHeat(this, next, heatModule().heat * heatTransmittance);
 				}
 			}

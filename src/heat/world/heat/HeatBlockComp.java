@@ -3,7 +3,7 @@ package heat.world.heat;
 import arc.graphics.Color;
 import arc.util.Nullable;
 import mindustry.gen.Building;
-import heat.world.heat.HeatModule;
+import heat.world.heat.*;
 
 public interface HeatBlockComp {
 	default HeatModule heatModule() {

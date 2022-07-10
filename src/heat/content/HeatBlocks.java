@@ -1,11 +1,10 @@
 package heat.content;
 
-import mindustry.ctype.ContentList;
 import mindustry.world.Block;
 import heat.world.heat.production.*;
 import heat.world.heat.distribution.*;
 
-public class HeatBlocks implements ContentList {
+public class HeatBlocks implements {
 	public static Block heatConveyor, heatSource, heatVoid;
 
 	@Override
@@ -22,7 +21,7 @@ public class HeatBlocks implements ContentList {
 			minHeat = 25f;
 			maxHeat = 1000000f;
 		}};
-		heatVoid = new heatVoid("heat-void") {{
+		heatVoid = new HeatVoid("heat-void") {{
 			size = 1;
 			health = 50;
 			minHeat = 25f;
