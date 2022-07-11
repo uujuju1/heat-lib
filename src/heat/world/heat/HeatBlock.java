@@ -61,9 +61,9 @@ public class HeatBlock extends Block {
 		}
 		@Override
 		public boolean outputHeat(float heat, Building to) {
-			if (!(to instanceof HeatBlockBuild)) return;
+			if (!(to instanceof HeatBlockBuild)) return false;
 			HeatBlockBuild next = (HeatBlockBuild) to;
-			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + to.heatModule().heat;
+			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + next.heatModule().heat;
 		}
 
 		public void addHeat(float heat, @Nullable Building build) {heatModule().heat += heat;}
