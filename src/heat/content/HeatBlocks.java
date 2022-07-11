@@ -1,5 +1,6 @@
 package heat.content;
 
+import arc.graphics.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.draw.*;
@@ -28,7 +29,7 @@ public class HeatBlocks {
 				flameColor = midColor = Color.valueOf("F8C266");
 			}});
 			consumeItems(with(Items.coal, 1));
-			outputHeat = 250f;
+			heatOutput = 300f;
 		}};
 		heatSource = new HeatSource("heat-source") {{
 			size = 1;
