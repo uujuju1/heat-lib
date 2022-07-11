@@ -12,14 +12,14 @@ public interface HeatBlockComp {
 
 	// manipulate heat
 	default void addHeat(float heat, @Nullable Building build) {}
-	default void addHeat(float heat) {}
+	default void addHeat(float heat) {addHeat(heat, null)}
 
 	default void removeHeat(float heat, @Nullable Building build) {}
-	default void removeHeat(float heat) {}
+	default void removeHeat(float heat) {removeHeat(heat, null)}
 
 	default void setHeat(float heat, @Nullable Building build) {}
-	default void setHeat(float heat) {}
-	
+	default void setHeat(float heat) {setHeat(heat, null)}
+
 	// exchange heat
 	default boolean acceptHeat(float heat, Building src) {
 		return true;

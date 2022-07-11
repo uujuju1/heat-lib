@@ -20,8 +20,8 @@ public class HeatBlock extends Block {
 		// percentage of heat transmition
 		heatTransmittance = 0.05f,
 
-		// scale of delta time worth of heat lost
-		coolDownScl = 0.01f;
+		// percentage of heat lost
+		HeatCooldown = 0.01f;
 	public boolean
 		acceptsHeat = true,
 		outputsHeat = true;
@@ -29,6 +29,7 @@ public class HeatBlock extends Block {
 	public HeatBlock(String name) {
 		super(name);
 		solid = destructible = true;
+		update = sync = true;
 		buildVisibility = BuildVisibility.shown;
 	}
 
@@ -41,7 +42,7 @@ public class HeatBlock extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		addBar("heat", entity -> new Bar(Core.bundle.get("bar.heat") + ":" + ((HeatBlockBuild) entity).heatModule().heat, Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
+		addBar("heat", entity -> new Bar(Core.bundle.get("bar.heat"), Pal.turretHeat, () -> ((HeatBlockBuild) entity).heatf()));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatBlockComp {
@@ -92,9 +93,10 @@ public class HeatBlock extends Block {
 				HeatBlockBuild next;
 				if (this.proximity.get(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) this.proximity.get(i);
-					if (next.acceptHeat(heatModule().heat * heatTransmittance, this)) transferHeat(this, next, heatModule().heat * heatTransmittance);
+					if (next.acceptHeat(heatModule().heat * heatTransmittance, this) && next.heatModule().heat < heatModule().heat) transferHeat(this, next, heatModule().heat * heatTransmittance);
 				}
 			}
+			removeHeat(heatModule().heat * heatCooldown, this);
 		}
 
 		@Override

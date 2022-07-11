@@ -1,5 +1,5 @@
 package heat.world.heat;
 
 public class HeatModule {
-	public float heat;
+	public float heat = 0;
 }

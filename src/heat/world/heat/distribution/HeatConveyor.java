@@ -13,7 +13,6 @@ public class HeatConveyor extends HeatBlock {
 
 	public HeatConveyor(String name) {
 		super(name);
-		rotate = true;
 		acceptsHeat = outputsHeat = true;
 		heatTransmittance = 0.1f;
 	}
@@ -25,11 +24,6 @@ public class HeatConveyor extends HeatBlock {
 		connectionHeat = Core.atlas.find(name + "-connection-heat");
 	}
 
-	@Override
-	public boolean canReplace(Block other) {
-		return super.canReplace(other) || other instanceof HeatConveyor;
-	}
-
 	public class HeatConveyorBuild extends HeatBlockBuild {
 		@Override
 		public void draw() {
@@ -38,7 +32,7 @@ public class HeatConveyor extends HeatBlock {
 				HeatBlockBuild next;
 				if (nearby(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) nearby(i);
-					if (next.acceptHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connection, x, y, i * 90);
+					if (next.acceptHeat(heatModule().heat * heatTransmittance, this) || next.outputHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connection, x, y, i * 90);
 				}
 			}
 			Draw.color(Pal.turretHeat);
@@ -48,7 +42,7 @@ public class HeatConveyor extends HeatBlock {
 				HeatBlockBuild next;
 				if (nearby(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) nearby(i);
-					if (next.acceptHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connectionHeat, x, y, i * 90);
+					if (next.acceptHeat(heatModule().heat * heatTransmittance, this) || next.outputHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connectionHeat, x, y, i * 90);
 				}
 			}
 		}
