@@ -1,5 +1,10 @@
 package heat.world.heat.production;
 
+import arc.math.*;
+import arc.util.*;
+import arc.graphics.*;
+import arc.graphics.g2d.*;
+import mindustry.world.draw.*;
 import heat.world.heat.*;
 // consumes stuff to get heat
 public class HeatCrafter extends HeatBlock {
