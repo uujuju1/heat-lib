@@ -21,7 +21,7 @@ public class HeatBlock extends Block {
 		heatTransmittance = 0.05f,
 
 		// percentage of heat lost
-		HeatCooldown = 0.01f;
+		heatCooldown = 0.01f;
 	public boolean
 		acceptsHeat = true,
 		outputsHeat = true;
