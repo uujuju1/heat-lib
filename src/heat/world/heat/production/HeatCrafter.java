@@ -22,6 +22,12 @@ public class HeatCrafter extends HeatBlock {
 		acceptsHeat = false;
 	}
 
+	@Override
+	public void load() {
+		super.load();
+		drawer.load(this);
+	}
+
 	public class HeatCrafterBuild extends HeatBlockBuild {
 		public float progress;
 		public float totalProgress;
