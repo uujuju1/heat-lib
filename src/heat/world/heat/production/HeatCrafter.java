@@ -30,7 +30,7 @@ public class HeatCrafter extends HeatBlock {
 		@Override
 		public void draw() {
 			drawer.draw(this);
-			Draw.color(Color.valueOF("F8C266"));
+			Draw.color(Color.valueOf("F8C266"));
 			Draw.alpha(heatf());
 			drawHeat();
 		}

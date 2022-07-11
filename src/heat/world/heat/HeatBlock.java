@@ -61,7 +61,9 @@ public class HeatBlock extends Block {
 		}
 		@Override
 		public boolean outputHeat(float heat, Building to) {
-			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + to.heat;
+			if (!(to instanceof HeatBlockBuild)) return;
+			HeatBlockBuild next = (HeatBlockBuild) to;
+			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + to.heatModule().heat;
 		}
 
 		public void addHeat(float heat, @Nullable Building build) {heatModule().heat += heat;}
@@ -104,7 +106,7 @@ public class HeatBlock extends Block {
 		@Override
 		public void draw() {
 			super.draw();
-			Draw.color(Color.valueOF("F8C266"));
+			Draw.color(Color.valueOf("F8C266"));
 			Draw.alpha(heatf());
 			drawHeat();
 		}
