@@ -53,6 +53,39 @@ public class HeatedCrafter extends HeatBlock {
 			return warmup;
 		}
 
+		public void dumpOutputs(){
+			if(outputItems != null && timer(timerDump, dumpTime / timeScale)){
+				for(ItemStack output : outputItems){
+					dump(output.item);
+				}
+			}
+
+			if(outputLiquids != null){
+				for(int i = 0; i < outputLiquids.length; i++){
+					int dir = liquidOutputDirections.length > i ? liquidOutputDirections[i] : -1;
+
+					dumpLiquid(outputLiquids[i].liquid, 2f, dir);
+				}
+			}
+		}
+
+		public void craft(){
+			consume();
+
+			if(outputItems != null){
+				for(var output : outputItems){
+					for(int i = 0; i < output.amount; i++){
+						offload(output.item);
+					}
+				}
+			}
+
+			if(wasVisible){
+				craftEffect.at(x, y);
+			}
+			progress %= 1f;
+		}
+
 		@Override
 		public boolean shouldConsume(){
 			if(outputItems != null){
@@ -107,7 +140,6 @@ public class HeatedCrafter extends HeatBlock {
 
 			if(progress >= 1f){
 				craft();
-				progress = 0f;
 			}
 
 			dumpOutputs();

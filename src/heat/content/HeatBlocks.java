@@ -1,6 +1,7 @@
 package heat.content;
 
 import arc.graphics.*;
+import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.draw.*;
@@ -50,7 +51,7 @@ public class HeatBlocks {
 			));
 			consumeHeat = 150;
 			outputItem = new ItemStack(Items.silicon, 5);
-			otuputLiquid = new LiquidStack(Liquids.slag, 0.1f);
+			outputLiquid = new LiquidStack(Liquids.slag, 0.1f);
 		}};
 		heatSource = new HeatSource("heat-source") {{
 			size = 1;
