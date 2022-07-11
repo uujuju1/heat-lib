@@ -24,7 +24,8 @@ public class HeatBlock extends Block {
 		heatCooldown = 0.01f;
 	public boolean
 		acceptsHeat = true,
-		outputsHeat = true;
+		outputsHeat = true,
+		canOverflow = true;
 
 	public HeatBlock(String name) {
 		super(name);
@@ -58,8 +59,8 @@ public class HeatBlock extends Block {
 			return acceptsHeat;
 		}
 		@Override
-		public boolean outputHeat(float heat, Building src) {
-			return outputsHeat;
+		public boolean outputHeat(float heat, Building to) {
+			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + src.heat;
 		}
 
 		public void addHeat(float heat, @Nullable Building build) {heatModule().heat += heat;}
@@ -93,7 +94,7 @@ public class HeatBlock extends Block {
 				HeatBlockBuild next;
 				if (this.proximity.get(i) instanceof HeatBlockBuild) {
 					next = (HeatBlockBuild) this.proximity.get(i);
-					if (next.acceptHeat(heatModule().heat * heatTransmittance, this) && next.heatModule().heat < heatModule().heat) transferHeat(this, next, heatModule().heat * heatTransmittance);
+					if (outputHeat(heatModule().heat * heatTransmittance, next)) if (next.acceptHeat(heatModule().heat * heatTransmittance, this) && next.heatModule().heat < heatModule().heat) transferHeat(this, next, heatModule().heat * heatTransmittance);
 				}
 			}
 			removeHeat(heatModule().heat * heatCooldown, this);
@@ -102,7 +103,7 @@ public class HeatBlock extends Block {
 		@Override
 		public void draw() {
 			super.draw();
-			Draw.color(Pal.turretHeat);
+			Draw.color(Color.valueOF("F8C266"));
 			Draw.alpha(heatf());
 			drawHeat();
 		}
@@ -115,6 +116,18 @@ public class HeatBlock extends Block {
 		@Override
 		public void drawHeat() {
 			Draw.rect(heat, x, y, 0);
+		}
+
+		@Override
+		public void write(Writes write){
+			super.write(write);
+			write.f(heatModule().heat);	
+		}
+
+		@Override
+		public void read(Reads read, byte revision){
+			super.read(read, revision);
+			setHeat(read.f(), this);
 		}
 	}
 }

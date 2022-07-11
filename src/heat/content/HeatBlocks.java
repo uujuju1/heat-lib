@@ -5,7 +5,7 @@ import heat.world.heat.production.*;
 import heat.world.heat.distribution.*;
 
 public class HeatBlocks {
-	public static Block heatConveyor, heatSource, heatVoid;
+	public static Block heatConveyor, burner, heatSource, heatVoid;
 
 	public void load() {
 		heatConveyor = new HeatConveyor("heat-conveyor") {{
@@ -13,6 +13,15 @@ public class HeatBlocks {
 			health = 50;
 			minHeat = 25f;
 			maxHeat = 1000f;
+		}};
+		burner = new HeatCrafter("burner") {{
+			size = 3;
+			health = 200;
+			minHeat = 25f;
+			maxHeat = 300f;
+			consumeSpeed = 60;
+			consumeItems(Items.coal, 1);
+			outputHeat = 250f;
 		}};
 		heatSource = new HeatSource("heat-source") {{
 			size = 1;

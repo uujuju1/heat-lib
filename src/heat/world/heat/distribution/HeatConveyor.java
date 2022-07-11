@@ -35,7 +35,7 @@ public class HeatConveyor extends HeatBlock {
 					if (next.acceptHeat(heatModule().heat * heatTransmittance, this) || next.outputHeat(heatModule().heat * heatTransmittance, this)) Draw.rect(connection, x, y, i * 90);
 				}
 			}
-			Draw.color(Pal.turretHeat);
+			Draw.color(Color.valueOf("F8C266"));
 			Draw.alpha(heatf());
 			drawHeat();
 			for (int i = 0; i < 4; i++) {
