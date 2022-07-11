@@ -9,7 +9,7 @@ import heat.world.heat.*;
 // consumes stuff to get heat
 public class HeatCrafter extends HeatBlock {
 	public float 
-	outputHeat = 30,
+	heatOutput = 30,
 
 	consumeSpeed = 60,
 
@@ -31,7 +31,7 @@ public class HeatCrafter extends HeatBlock {
 		public void draw() {
 			drawer.draw(this);
 			Draw.color(Color.valueOf("F8C266"));
-			Draw.alpha(heatf());
+			Draw.alpha(heatf() * 0.5f);
 			drawHeat();
 		}
 
@@ -49,17 +49,20 @@ public class HeatCrafter extends HeatBlock {
 			if(efficiency > 0){
 				progress += getProgressIncrease(consumeSpeed);
 				warmup = Mathf.approachDelta(warmup, 1, warmupSpeed);
-				setHeat(minHeat + (warmup *outputHeat));
 			} else {
 				warmup = Mathf.approachDelta(warmup, 0f, warmupSpeed);
 				progress = Mathf.approachDelta(progress, 0f, warmupSpeed);
 			}
+			setHeat(minHeat + (warmup * heatOutput));
 
 			totalProgress += warmup * Time.delta;
 
 			if(progress >= 1f){
 				consume();
+				progress = 0;
 			}
+
+			super.updateTile();
 		}
 	}
 }

@@ -107,7 +107,7 @@ public class HeatBlock extends Block {
 		public void draw() {
 			super.draw();
 			Draw.color(Color.valueOf("F8C266"));
-			Draw.alpha(heatf());
+			Draw.alpha(heatf() * 0.5f);
 			drawHeat();
 		}
 

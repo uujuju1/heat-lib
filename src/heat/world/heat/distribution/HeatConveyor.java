@@ -36,7 +36,7 @@ public class HeatConveyor extends HeatBlock {
 				}
 			}
 			Draw.color(Color.valueOf("F8C266"));
-			Draw.alpha(heatf());
+			Draw.alpha(heatf() * 0.5f);
 			drawHeat();
 			for (int i = 0; i < 4; i++) {
 				HeatBlockBuild next;

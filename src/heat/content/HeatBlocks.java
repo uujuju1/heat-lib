@@ -1,7 +1,8 @@
 package heat.content;
 
+import mindustry.world.*;
 import mindustry.content.*;
-import mindustry.world.Block;
+import mindustry.world.draw.*;
 import heat.world.heat.production.*;
 import heat.world.heat.distribution.*;
 
@@ -22,7 +23,10 @@ public class HeatBlocks {
 			health = 200;
 			minHeat = 25f;
 			maxHeat = 300f;
-			consumeSpeed = 60;
+			consumeSpeed = 150f;
+			drawer = new DrawMulti(new DrawDefault(), new DrawArcSmelt() {{
+				flameColor = midColor = Color.valueOf("F8C266");
+			}});
 			consumeItems(with(Items.coal, 1));
 			outputHeat = 250f;
 		}};
