@@ -5,6 +5,8 @@ import mindustry.world.Block;
 import heat.world.heat.production.*;
 import heat.world.heat.distribution.*;
 
+import static mindustry.type.ItemStack.*;
+
 public class HeatBlocks {
 	public static Block heatConveyor, burner, heatSource, heatVoid;
 
@@ -21,7 +23,7 @@ public class HeatBlocks {
 			minHeat = 25f;
 			maxHeat = 300f;
 			consumeSpeed = 60;
-			consumeItems(Items.coal, 1);
+			consumeItems(with(Items.coal, 1));
 			outputHeat = 250f;
 		}};
 		heatSource = new HeatSource("heat-source") {{

@@ -8,8 +8,12 @@ import mindustry.world.draw.*;
 import heat.world.heat.*;
 // consumes stuff to get heat
 public class HeatCrafter extends HeatBlock {
-	public float outputHeat = 30,
-	consumeSpeed = 60;
+	public float 
+	outputHeat = 30,
+
+	consumeSpeed = 60,
+
+	warmupSpeed = 0.019f;
 
 	public DrawBlock drawer = new DrawDefault();
 
@@ -45,7 +49,7 @@ public class HeatCrafter extends HeatBlock {
 			if(efficiency > 0){
 				progress += getProgressIncrease(consumeSpeed);
 				warmup = Mathf.approachDelta(warmup, 1, warmupSpeed);
-				setHeat(minheat + (warmup *outputHeat));
+				setHeat(minHeat + (warmup *outputHeat));
 			} else {
 				warmup = Mathf.approachDelta(warmup, 0f, warmupSpeed);
 				progress = Mathf.approachDelta(progress, 0f, warmupSpeed);

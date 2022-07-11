@@ -3,6 +3,7 @@ package heat.world.heat;
 import arc.*;
 import arc.util.*;
 import arc.util.io.*;
+import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
@@ -60,7 +61,7 @@ public class HeatBlock extends Block {
 		}
 		@Override
 		public boolean outputHeat(float heat, Building to) {
-			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + src.heat;
+			return canOverflow ? outputsHeat : outputsHeat && heatModule().heat * heatTransmittance + to.heat;
 		}
 
 		public void addHeat(float heat, @Nullable Building build) {heatModule().heat += heat;}
