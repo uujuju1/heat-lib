@@ -40,10 +40,10 @@ public class HeatCrafter extends HeatBlock {
 			if(efficiency > 0){
 				progress += getProgressIncrease(consumeSpeed);
 				warmup = Mathf.approachDelta(warmup, 1, warmupSpeed);
-				setHeat(minheat + (warmup *outputHeat))
+				setHeat(minheat + (warmup *outputHeat));
 			} else {
 				warmup = Mathf.approachDelta(warmup, 0f, warmupSpeed);
-				progress = Mathf.approachDelta(progress, 0f, warmupSpeed)
+				progress = Mathf.approachDelta(progress, 0f, warmupSpeed);
 			}
 
 			totalProgress += warmup * Time.delta;
